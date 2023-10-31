@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/skype",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Ilya",
+      "email": "ilyahtml@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^10.4"
+  }
+}
