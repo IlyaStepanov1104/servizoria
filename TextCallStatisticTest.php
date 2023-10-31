@@ -32,9 +32,17 @@ class TextCallStatisticTest extends TestCase
         $this->assertEquals(1, $statistic->getCalled());
     }
 
-    public function testAnalyse_3_EmptyText()
+    public function testAnalyse_3()
     {
         $statistic = new TextCallStatistic('text/test_3.txt');
+        $this->assertTrue($statistic->isHello());
+        $this->assertFalse($statistic->isIntroduced());
+        $this->assertEquals(3, $statistic->getCalled());
+    }
+
+    public function testAnalyse_4_EmptyText()
+    {
+        $statistic = new TextCallStatistic('text/test_4.txt');
         $this->assertFalse($statistic->isHello());
         $this->assertFalse($statistic->isIntroduced());
         $this->assertEquals(0, $statistic->getCalled());

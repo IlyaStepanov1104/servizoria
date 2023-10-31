@@ -56,7 +56,7 @@ class TextCallStatistic
         $file = fopen($filePath, 'r');
         if (!$file) throw new Exception('Can not open a file!');
         $text = fgets($file);
-        $textExplode = explode('.', $text);
+        $textExplode = preg_split('/[.?!]/', $text);
         foreach ($this->getHelloWords() as $word) {
             if (str_contains($textExplode[0], $word)) {
                 $this->setHello(true);
@@ -64,7 +64,8 @@ class TextCallStatistic
             }
         }
         foreach ($this->getIntroducedWords() as $word) {
-            if (str_contains($textExplode[1], $word) || str_contains($textExplode[2], $word)) {
+            if (isset($textExplode[1]) && str_contains($textExplode[1], $word)
+                || isset($textExplode[2]) && str_contains($textExplode[2], $word)) {
                 $this->setIntroduced(true);
                 break;
             }
@@ -72,6 +73,7 @@ class TextCallStatistic
         $this->setCalled(array_sum(array_map(fn($element) => substr_count($text, $element), $this->getNames())));
     }
 
+//    TODO: edit to SELECT from Database
     private function getHelloWords(): array
     {
         return array(
