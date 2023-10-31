@@ -18,7 +18,7 @@ class TextCallStatisticTest extends TestCase
 
     public function testAnalyse_1()
     {
-        $statistic = new TextCallStatistic('test_1.txt');
+        $statistic = new TextCallStatistic('text/test_1.txt');
         $this->assertTrue($statistic->isHello());
         $this->assertTrue($statistic->isIntroduced());
         $this->assertEquals(1, $statistic->getCalled());
@@ -26,15 +26,15 @@ class TextCallStatisticTest extends TestCase
 
     public function testAnalyse_2()
     {
-        $statistic = new TextCallStatistic('test_2.txt');
+        $statistic = new TextCallStatistic('text/test_2.txt');
         $this->assertTrue($statistic->isHello());
         $this->assertTrue($statistic->isIntroduced());
         $this->assertEquals(1, $statistic->getCalled());
     }
 
-    public function testAnalyse_3()
+    public function testAnalyse_3_EmptyText()
     {
-        $statistic = new TextCallStatistic('test_3.txt');
+        $statistic = new TextCallStatistic('text/test_3.txt');
         $this->assertFalse($statistic->isHello());
         $this->assertFalse($statistic->isIntroduced());
         $this->assertEquals(0, $statistic->getCalled());
